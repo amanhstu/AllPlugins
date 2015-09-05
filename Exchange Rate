@@ -1,0 +1,28 @@
+<?php
+
+/* 
+ * Plugin Name: Exchange Rate
+ * Author: Amanur Rahman
+ * Author URI: http://www.ahsanurrahman.com
+ * Plugin URI: http://www.ahsanurrahman.com
+ * Description: This is My first plugin
+ * Version: 1.0
+ */
+
+add_action('init', 'amanhstu_register_shortcode');
+
+function amanhstu_register_shortcode(){
+    add_shortcode('rate', 'amanhstu_rate');
+}
+
+function amanhstu_rate($args, $content){
+    $result = wp_remote_get('http://finance.yahoo.com/d/quotes.csv?s='.$args['from'].$args['to'].'=x&f=l1');
+    return $result['body'].''.esc_attr($content);
+}
+
+
+
+
+
+
+?>
