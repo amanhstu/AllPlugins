@@ -1,0 +1,27 @@
+<?php
+
+/* 
+ * Plugin Name: Aman's shortcode
+ * Author: Amanur Rahman
+ * Author URI: http://www.ahsanurrahman.com
+ * Plugin URI: http://www.ahsanurrahman.com
+ * Description: This is My first plugin
+ * Version: 1.0
+ */
+
+add_action('init', 'aman_register_shortcode');
+
+function aman_register_shortcode(){
+    add_shortcode('aman', 'aman_rate');
+}
+
+function aman_rate($args, $content){
+    return strtoupper($args['number']);
+}
+
+
+
+
+
+
+?>
